@@ -31,6 +31,7 @@ public class UserService {
         User user = userRepository.findById(userSignUpReq.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("이메일 중복"));
 
+        userRepository.save(user);
         return new SimpleResponseDto(true);
     }
 
