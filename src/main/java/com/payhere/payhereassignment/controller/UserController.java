@@ -1,6 +1,8 @@
 package com.payhere.payhereassignment.controller;
 
 import com.payhere.payhereassignment.dto.SimpleResponseDto;
+import com.payhere.payhereassignment.dto.TokenDto;
+import com.payhere.payhereassignment.dto.UserSignInReq;
 import com.payhere.payhereassignment.dto.UserSignUpReq;
 import com.payhere.payhereassignment.security.JwtTokenProvider;
 import com.payhere.payhereassignment.service.UserService;
@@ -22,7 +24,12 @@ public class UserController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping(path = "user/signUp")
-    public ResponseEntity<SimpleResponseDto> signUp(@Validated UserSignUpReq userSignUpRequest) throws Exception {
-        return ResponseEntity.ok().body(userService.signUp(userSignUpRequest));
+    public ResponseEntity<SimpleResponseDto> signUp(@Validated UserSignUpReq userSignUpReq) throws Exception {
+        return ResponseEntity.ok().body(userService.signUp(userSignUpReq));
+    }
+
+    @PostMapping(path = "user/signIn")
+    public ResponseEntity<TokenDto> signIn(@Validated UserSignInReq userSignInReq) throws Exception {
+        return userService.signIn(userSignInReq);
     }
 }
