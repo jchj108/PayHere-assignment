@@ -1,5 +1,6 @@
 package com.payhere.payhereassignment.dto;
 
+import com.payhere.payhereassignment.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -24,8 +25,8 @@ public class UserSignUpReq {
         this.password = password;
     }
 
-    public UserSignUpReq toEntity() {
-        return UserSignUpReq.builder()
+    public User toEntity() {
+        return User.builder()
                 .email(this.getEmail())
                 .password(this.getPassword())
                 .build();
