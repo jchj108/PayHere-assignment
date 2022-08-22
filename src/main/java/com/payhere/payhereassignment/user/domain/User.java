@@ -1,13 +1,14 @@
 package com.payhere.payhereassignment.user.domain;
 
+import com.payhere.payhereassignment.ledger.domain.Ledger;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @Entity
@@ -19,9 +20,13 @@ public class User {
     @Column
     private String password;
 
-    public User(String email, String password) {
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Ledger> ledgerList = new ArrayList<>();
+
+    public User(String email, String password, List<Ledger> ledgerList) {
         this.email = email;
         this.password = password;
+        this.ledgerList = ledgerList;
     }
 
     // 비밀번호 암호화
