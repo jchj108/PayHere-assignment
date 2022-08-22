@@ -24,6 +24,7 @@ public class User {
         this.password = password;
     }
 
+    // 비밀번호 암호화
     public User hashPassword(PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(this.password);
         return this;

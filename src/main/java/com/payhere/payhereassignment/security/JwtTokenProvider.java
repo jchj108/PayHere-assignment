@@ -27,9 +27,7 @@ public class JwtTokenProvider {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    /**
-     * 적절한 설정을 통해 토큰을 생성하여 반환
-     */
+    // 토큰 발행
     public String generateToken(Authentication authentication) {
         Claims claims = Jwts.claims().setSubject(authentication.getName());
         Date now = new Date();
@@ -43,9 +41,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    /**
-     * 토큰으로부터 클레임을 만들고, 이를 통해 User 객체를 생성하여 Authentication 객체를 반환
-     */
+    // 토큰으로부터 클레임을 만들고, 이를 통해 User 객체를 생성하여 Authentication 객체를 반환
     public Authentication getAuthentication(String token) {
         String username = Jwts.parser().setSigningKey(secret_key).parseClaimsJws(token).getBody().getSubject();
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -53,9 +49,7 @@ public class JwtTokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    /**
-     * http 헤더로부터 bearer 토큰을 가져옴.
-     */
+    // httpHeader 로부터 토큰을 가져옴
     public String resolveToken(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
@@ -64,9 +58,7 @@ public class JwtTokenProvider {
         return null;
     }
 
-    /**
-     * 토큰을 검증
-     */
+    // 토큰 검증
     public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(secret_key).parseClaimsJws(token);

@@ -34,7 +34,7 @@ public class UserController {
     @PostMapping(path = "/signIn")
     public ResponseEntity<TokenDto> signIn(@Validated UserSignInReq userSignInReq, HttpServletResponse response) throws Exception {
         ResponseEntity<TokenDto> responseEntity = userService.signIn(userSignInReq);
-
+        // 로그인 시 쿠키 저장
         Cookie cookie = new Cookie(
                 "access_token",
                 responseEntity.getBody().getAccess_token()
