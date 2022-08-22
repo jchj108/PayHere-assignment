@@ -23,12 +23,13 @@ public class UserController {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    @PostMapping(path = "user/signUp")
+    @RequestMapping(path = "/signUp")
     public ResponseEntity<SimpleResponseDto> signUp(@Validated UserSignUpReq userSignUpReq) throws Exception {
+        log.info("signUpController");
         return ResponseEntity.ok().body(userService.signUp(userSignUpReq));
     }
 
-    @PostMapping(path = "user/signIn")
+    @PostMapping(path = "/signIn")
     public ResponseEntity<TokenDto> signIn(@Validated UserSignInReq userSignInReq) throws Exception {
         return userService.signIn(userSignInReq);
     }

@@ -1,6 +1,5 @@
 package com.payhere.payhereassignment.service;
 
-import com.payhere.payhereassignment.domain.User;
 import com.payhere.payhereassignment.dto.SimpleResponseDto;
 import com.payhere.payhereassignment.dto.TokenDto;
 import com.payhere.payhereassignment.dto.UserSignInReq;
@@ -28,8 +27,7 @@ public class UserService {
     private final AuthenticationManager authenticationManager;
 
     public SimpleResponseDto signUp(UserSignUpReq userSignUpReq) throws Exception {
-        User user = userRepository.findById(userSignUpReq.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("이메일 중복"));
+        userRepository.findById(userSignUpReq.getEmail());
 
         userRepository.save(userSignUpReq.toEntity());
         return new SimpleResponseDto(true);
