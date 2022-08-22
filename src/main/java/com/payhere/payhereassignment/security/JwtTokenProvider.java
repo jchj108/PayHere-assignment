@@ -29,8 +29,6 @@ public class JwtTokenProvider {
 
     /**
      * 적절한 설정을 통해 토큰을 생성하여 반환
-     * @param authentication
-     * @return
      */
     public String generateToken(Authentication authentication) {
         Claims claims = Jwts.claims().setSubject(authentication.getName());

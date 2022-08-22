@@ -1,5 +1,6 @@
 package com.payhere.payhereassignment.service;
 
+import com.payhere.payhereassignment.domain.User;
 import com.payhere.payhereassignment.dto.SimpleResponseDto;
 import com.payhere.payhereassignment.dto.TokenDto;
 import com.payhere.payhereassignment.dto.UserSignInReq;
@@ -20,27 +21,30 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
 
     public SimpleResponseDto signUp(UserSignUpReq userSignUpReq) throws Exception {
-        userRepository.findById(userSignUpReq.getEmail());
-
-        userRepository.save(userSignUpReq.toEntity());
+        userRepository.findById(userSignUpReq.getEmail())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });;
+        User user = userSignUpReq.toEntity();
+        user.hashPassword(passwordEncoder);
+        userRepository.save(user);
         return new SimpleResponseDto(true);
     }
 
     public ResponseEntity<TokenDto> signIn(UserSignInReq userSignInReq) {
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            userSignInReq.getEmail(),
-                            userSignInReq.getPassword()
-                    )
-            );
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userSignInReq.getEmail(), userSignInReq.getPassword());
+            /*
+                DB의 UserDetail과 토큰의 정보를 비교해 인증을 실행한다.
+                이때 토큰의 RawPassword를 encoding 하므로 암호화가 되지 않았거나 인코딩 방식이 맞지 않으면 인증에 실패할 수 있다.
+             */
+            Authentication authentication = authenticationManager.authenticate(token);
             TokenDto tokenDto = new TokenDto(jwtTokenProvider.generateToken(authentication));
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("Authorization", "Bearer " + tokenDto.getAccess_token());

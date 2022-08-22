@@ -37,10 +37,9 @@ public class SecurityConfig {
         http.csrf().disable();
         http
                 .authorizeRequests()
-                // 회원가입, 로그인 제외하고 인증 유지
-                .antMatchers(
+                .antMatchers(                 // 회원가입, 로그인 제외하고 인증 유지
                         "/user/signUp",
-                        "/user/login"
+                        "/user/signIn"
                 ).permitAll()
                 .anyRequest().authenticated();
 

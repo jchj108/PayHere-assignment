@@ -11,9 +11,6 @@ import java.io.IOException;
 
 /**
  * AccessDeniedHandler
- *
- * AuthenticationEntryPoint와 달리 AccessDeniedHandler는
- * 유저 정보는 있으나, 엑세스 권한이 없는 경우 동작하는 친구이다.
  */
 @Component
 public class JwtAccessDeniedHandler implements AccessDeniedHandler {
