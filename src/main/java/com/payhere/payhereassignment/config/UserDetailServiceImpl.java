@@ -1,8 +1,8 @@
 package com.payhere.payhereassignment.config;
 
-import com.payhere.payhereassignment.domain.User;
-import com.payhere.payhereassignment.exception.UserNotFoundException;
-import com.payhere.payhereassignment.repository.UserRepository;
+import com.payhere.payhereassignment.user.domain.User;
+import com.payhere.payhereassignment.user.exception.UserNotFoundException;
+import com.payhere.payhereassignment.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

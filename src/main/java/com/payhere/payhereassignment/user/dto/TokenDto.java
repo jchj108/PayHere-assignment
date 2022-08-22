@@ -1,4 +1,4 @@
-package com.payhere.payhereassignment.dto;
+package com.payhere.payhereassignment.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

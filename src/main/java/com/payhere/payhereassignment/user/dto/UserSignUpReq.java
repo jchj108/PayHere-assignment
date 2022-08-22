@@ -1,6 +1,6 @@
-package com.payhere.payhereassignment.dto;
+package com.payhere.payhereassignment.user.dto;
 
-import com.payhere.payhereassignment.domain.User;
+import com.payhere.payhereassignment.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @ToString
-public class UserSignInReq {
+public class UserSignUpReq {
 
     @NotEmpty
     @Email
@@ -20,7 +20,7 @@ public class UserSignInReq {
     private String password;
 
     @Builder
-    public UserSignInReq(String email, String password) {
+    public UserSignUpReq(String email, String password) {
         this.email = email;
         this.password = password;
     }

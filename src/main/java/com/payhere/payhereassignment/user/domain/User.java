@@ -1,4 +1,4 @@
-package com.payhere.payhereassignment.domain;
+package com.payhere.payhereassignment.user.domain;
 
 import lombok.Builder;
 import lombok.Getter;

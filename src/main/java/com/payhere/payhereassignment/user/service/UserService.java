@@ -1,11 +1,11 @@
-package com.payhere.payhereassignment.service;
+package com.payhere.payhereassignment.user.service;
 
-import com.payhere.payhereassignment.domain.User;
-import com.payhere.payhereassignment.dto.SimpleResponseDto;
-import com.payhere.payhereassignment.dto.TokenDto;
-import com.payhere.payhereassignment.dto.UserSignInReq;
-import com.payhere.payhereassignment.dto.UserSignUpReq;
-import com.payhere.payhereassignment.repository.UserRepository;
+import com.payhere.payhereassignment.user.domain.User;
+import com.payhere.payhereassignment.user.dto.SimpleResponseDto;
+import com.payhere.payhereassignment.user.dto.TokenDto;
+import com.payhere.payhereassignment.user.dto.UserSignInReq;
+import com.payhere.payhereassignment.user.dto.UserSignUpReq;
+import com.payhere.payhereassignment.user.repository.UserRepository;
 import com.payhere.payhereassignment.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -54,7 +54,7 @@ public class UserService {
                     .headers(httpHeaders)
                     .body(tokenDto);
         } catch (AuthenticationException e) {
-            throw new IllegalStateException("권한 없음");
+            throw new IllegalStateException("인증 실패");
         }
     }
 }
