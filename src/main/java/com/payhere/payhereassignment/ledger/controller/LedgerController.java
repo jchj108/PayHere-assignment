@@ -48,17 +48,17 @@ public class LedgerController {
                 new SimpleResponseDto(true));
     }
     @GetMapping(path = "/ledger/{id}")
-    public ResponseEntity<LedgerRes> findOne(@Validated LedgerSelectReq ledgerSelectReq) throws Exception {
+    public ResponseEntity<LedgerRes> findOne(@Validated LedgerSelectByIdReq ledgerSelectByIdReq) throws Exception {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(
-                new LedgerRes(ledgerRepository.findById(ledgerSelectReq.getId())
+                new LedgerRes(ledgerRepository.findById(ledgerSelectByIdReq.getId())
                         .orElseThrow(LedgerNotFoundException::new)
                 )
         );
     }
     @GetMapping(path = "/ledger/date/{writedTime}")
-    public ResponseEntity<List<LedgerRes>> findByDate(@Validated LedgerSelectByDate ledgerSelectByDate) throws Exception {
+    public ResponseEntity<List<LedgerRes>> findByDate(@Validated LedgerSelectByDateReq ledgerSelectByDate) throws Exception {
         List<Ledger> list = ledgerRepository.findByDate(ledgerSelectByDate.getWritedTime());
         List<LedgerRes> body = new ArrayList<LedgerRes>();
         for (Ledger ledger : list) {
@@ -70,8 +70,8 @@ public class LedgerController {
 
     }
     @GetMapping(path = "/ledger/list/{userId}")
-    public ResponseEntity<List<LedgerRes>> findByUserId(LedgerSelectReq ledgerSelectReq) throws Exception {
-        List<Ledger> list = ledgerRepository.findByUserId(ledgerSelectReq.getUserId()).orElseThrow(LedgerNotFoundException::new);
+    public ResponseEntity<List<LedgerRes>> findByUserId(LedgerSelectByUserIdReq ledgerSelectByUserIdReq) throws Exception {
+        List<Ledger> list = ledgerRepository.findByUserId(ledgerSelectByUserIdReq.getUserId()).orElseThrow(LedgerNotFoundException::new);
         List<LedgerRes> body = new ArrayList<LedgerRes>();
         for (Ledger ledger : list) {
             body.add(new LedgerRes(ledger));

@@ -46,10 +46,4 @@ public class UserController {
         response.addCookie(cookie);
         return responseEntity;
     }
-
-    @RequestMapping(path = "/asdf")
-    public String temp() {
-        System.out.println("1");
-        return "1";
-    }
 }

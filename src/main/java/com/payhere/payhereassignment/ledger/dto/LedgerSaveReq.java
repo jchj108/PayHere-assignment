@@ -15,6 +15,7 @@ public class LedgerSaveReq {
     private LocalDateTime writedTime;
     private String memo;
     private Long amount;
+    @NotNull
     private String userId;
 
     public LedgerSaveReq(LocalDateTime writedTime, String memo, Long amount, String userId) {

@@ -54,7 +54,7 @@ public class UserService {
                     .headers(httpHeaders)
                     .body(tokenDto);
         } catch (AuthenticationException e) {
-            throw new IllegalStateException("인증 실패");
+            throw new IllegalStateException("로그인에 실패했습니다. 아이디 비밀번호를 확인하세요");
         }
     }
 }

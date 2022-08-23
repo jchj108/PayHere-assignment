@@ -39,7 +39,16 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(                 // 회원가입, 로그인 제외하고 인증 유지
                         "/user/signUp",
-                        "/user/signIn"
+                        "/user/signIn",
+                        "/v3/api-docs/**",
+                        "/swagger-ui.html",
+                        "/swagger-ui/**",
+                        "/swagger-resources/**",
+                        "/v2/api-docs",
+                        "/configuration/ui",
+                        "/configuration/security",
+                        "/webjars/**",
+                        "/swagger/**"
                 ).permitAll()
                 .anyRequest().authenticated();
 

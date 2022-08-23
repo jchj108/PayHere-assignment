@@ -20,5 +20,6 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     ) throws IOException {
         System.out.println(request.getRequestURI());
         log.error("UnAuthorized -- message : " + e.getMessage());
+        throw new IllegalStateException("권한이 없습니다. 로그인부터 하세요.");
     }
 }

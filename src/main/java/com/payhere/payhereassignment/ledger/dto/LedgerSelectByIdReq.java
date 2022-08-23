@@ -6,13 +6,13 @@ import lombok.Getter;
 import javax.validation.constraints.NotNull;
 
 @Getter
-public class LedgerDeleteReq {
+public class LedgerSelectByIdReq {
     @NotNull
     private Long id;
 
-
-    public LedgerDeleteReq(Long id) {
+    public LedgerSelectByIdReq(Long id) {
         this.id = id;
+
     }
 
     public Ledger toEntity() {

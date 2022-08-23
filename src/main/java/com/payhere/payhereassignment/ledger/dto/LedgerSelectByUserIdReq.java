@@ -1,23 +1,24 @@
 package com.payhere.payhereassignment.ledger.dto;
 
 import com.payhere.payhereassignment.ledger.domain.Ledger;
+import com.payhere.payhereassignment.user.domain.User;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
-public class LedgerDeleteReq {
+public class LedgerSelectByUserIdReq {
     @NotNull
-    private Long id;
+    private String userId;
 
+    public LedgerSelectByUserIdReq(String userId) {
+        this.userId = userId;
 
-    public LedgerDeleteReq(Long id) {
-        this.id = id;
     }
 
     public Ledger toEntity() {
         return Ledger.builder()
-                .id(this.id)
+                .user(User.builder().id(this.userId).build())
                 .build();
     }
 }
