@@ -31,7 +31,12 @@
 ![image](https://user-images.githubusercontent.com/75921378/186226830-db96cd35-f1b3-4df1-863b-db5591ac08db.png)
 
 
-## API CALL Example
+## Security + JWT FLOW
 
+1. 각 API Endpoint에 요청이 들어왔을 때, DispatcherServlet으로 도달하기 전에 JwtTokenFilter가 유효한 토큰인지 검사
+2. 토큰이 존재하지만 만료되었거나 유효하지 않다면 예외 처리 수행
+3. 로그인 시 DB에 저장된 실제 유저 데이터와 유저가 입력한 아이디와 비밀번호를 비교. 이때 유저가 입력 비밀번호는 암호화 과정을 거친다. 일치하지 않는다면 로그인 실패 예외 리턴
+5. 시큐리티 antMatcher에서 Permit되지 않은 모든 URI Path에 대해 인증 절차 수행
+6. 유효한 토큰이라면 API 접근 인가, 유효하지 않거나 토큰이 존재하지 않는다면 UnAuthorized 예외 리턴
 
 
