@@ -14,20 +14,20 @@ public class UserSignInReq {
 
     @NotEmpty
     @Email
-    private String email;
+    private String id;
 
     @NotEmpty
     private String password;
 
     @Builder
-    public UserSignInReq(String email, String password) {
-        this.email = email;
+    public UserSignInReq(String id, String password) {
+        this.id = id;
         this.password = password;
     }
 
     public User toEntity() {
         return User.builder()
-                .email(this.getEmail())
+                .id(this.getId())
                 .password(this.getPassword())
                 .build();
     }

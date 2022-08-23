@@ -1,6 +1,6 @@
 package com.payhere.payhereassignment.user.controller;
 
-import com.payhere.payhereassignment.common.SimpleResponseDto;
+import com.payhere.payhereassignment.common.dto.SimpleResponseDto;
 import com.payhere.payhereassignment.user.dto.TokenDto;
 import com.payhere.payhereassignment.user.dto.UserSignInReq;
 import com.payhere.payhereassignment.user.dto.UserSignUpReq;

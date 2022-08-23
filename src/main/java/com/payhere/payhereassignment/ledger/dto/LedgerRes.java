@@ -13,6 +13,7 @@ public class LedgerRes {
     private String memo;
     private Long amount;
     private String userId;
+    private boolean deleted;
 
     public LedgerRes(Ledger ledger) {
         this.id = ledger.getId();
@@ -20,5 +21,6 @@ public class LedgerRes {
         this.memo = ledger.getMemo();
         this.amount = ledger.getAmount();
         this.userId = ledger.getUser().getId();
+        this.deleted = ledger.isDeleted();
     }
 }

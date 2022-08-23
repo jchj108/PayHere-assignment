@@ -1,4 +1,4 @@
-package com.payhere.payhereassignment.common;
+package com.payhere.payhereassignment.common.dto;
 
 import lombok.Getter;
 

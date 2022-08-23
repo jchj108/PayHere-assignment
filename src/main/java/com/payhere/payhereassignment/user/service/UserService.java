@@ -1,7 +1,7 @@
 package com.payhere.payhereassignment.user.service;
 
 import com.payhere.payhereassignment.user.domain.User;
-import com.payhere.payhereassignment.common.SimpleResponseDto;
+import com.payhere.payhereassignment.common.dto.SimpleResponseDto;
 import com.payhere.payhereassignment.user.dto.TokenDto;
 import com.payhere.payhereassignment.user.dto.UserSignInReq;
 import com.payhere.payhereassignment.user.dto.UserSignUpReq;
@@ -27,7 +27,7 @@ public class UserService {
     private final AuthenticationManager authenticationManager;
 
     public SimpleResponseDto signUp(UserSignUpReq userSignUpReq) throws Exception {
-        userRepository.findById(userSignUpReq.getEmail())
+        userRepository.findById(userSignUpReq.getId())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });;
@@ -39,7 +39,7 @@ public class UserService {
 
     public ResponseEntity<TokenDto> signIn(UserSignInReq userSignInReq) {
         try {
-            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userSignInReq.getEmail(), userSignInReq.getPassword());
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userSignInReq.getId(), userSignInReq.getPassword());
             /*
                 DB의 UserDetail과 토큰의 정보를 비교해 인증을 실행한다.
                 이때 토큰의 RawPassword를 encoding 하므로 암호화가 되지 않았거나 인코딩 방식이 맞지 않으면 인증에 실패할 수 있다.

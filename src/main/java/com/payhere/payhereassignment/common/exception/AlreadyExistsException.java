@@ -1,4 +1,4 @@
-package com.payhere.payhereassignment.user.exception;
+package com.payhere.payhereassignment.common.exception;
 
 public class AlreadyExistsException extends RuntimeException {
 
