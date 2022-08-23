@@ -23,8 +23,8 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Ledger> ledgerList = new ArrayList<>();
 
-    public User(String email, String password, List<Ledger> ledgerList) {
-        this.id = email;
+    public User(String id, String password, List<Ledger> ledgerList) {
+        this.id = id;
         this.password = password;
         this.ledgerList = ledgerList;
     }

@@ -27,8 +27,8 @@ public class UserSignUpReq {
 
     public User toEntity() {
         return User.builder()
-                .id(this.getId())
-                .password(this.getPassword())
+                .id(this.id)
+                .password(this.password)
                 .build();
     }
 }
