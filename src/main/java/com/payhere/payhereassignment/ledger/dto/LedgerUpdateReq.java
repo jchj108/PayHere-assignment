@@ -9,16 +9,18 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
-public class LedgerDeleteReq {
+public class LedgerUpdateReq {
     @NotNull
     private Long id;
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime writedTime;
     private String memo;
     private Long amount;
+    @NotNull
     private String userId;
 
-    public LedgerDeleteReq(Long id, LocalDateTime writedTime, String memo, Long amount, String userId) {
+    public LedgerUpdateReq(Long id, LocalDateTime writedTime, String memo, Long amount, String userId) {
         this.id = id;
         this.writedTime = writedTime;
         this.memo = memo;

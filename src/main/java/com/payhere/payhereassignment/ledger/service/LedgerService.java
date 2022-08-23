@@ -24,4 +24,5 @@ public class LedgerService {
         ledgerRepository.delete(ledgerDeleteReq.toEntity());
         return ResponseEntity.ok(new SimpleResponseDto(true));
     }
+
 }
