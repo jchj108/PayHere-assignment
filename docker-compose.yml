@@ -8,7 +8,7 @@ services:
       - ~/docker/mysql/var/lib/mysql:/var/lib/mysql
       - ~/docker/mysql/var/log/maria:/var/log/maria
     environment:
-      - MYSQL_DATABASE=database_name
+      - MYSQL_DATABASE=payhere
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_ROOT_HOST=%
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
@@ -19,7 +19,7 @@ services:
     build: .
     restart: on-failure
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/database_name?useUnicode=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/payhere?useUnicode=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 1234
     ports:
