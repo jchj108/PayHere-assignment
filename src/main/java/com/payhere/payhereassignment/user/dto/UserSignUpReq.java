@@ -20,8 +20,8 @@ public class UserSignUpReq {
     private String password;
 
     @Builder
-    public UserSignUpReq(String email, String password) {
-        this.id = email;
+    public UserSignUpReq(String id, String password) {
+        this.id = id;
         this.password = password;
     }
 
