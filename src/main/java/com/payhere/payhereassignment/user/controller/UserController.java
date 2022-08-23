@@ -8,6 +8,7 @@ import com.payhere.payhereassignment.security.JwtTokenProvider;
 import com.payhere.payhereassignment.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,9 @@ public class UserController {
 
     @PostMapping(path = "/signUp")
     public ResponseEntity<SimpleResponseDto> signUp(@Validated UserSignUpReq userSignUpReq) throws Exception {
-        return ResponseEntity.ok().body(userService.signUp(userSignUpReq));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(userService.signUp(userSignUpReq));
     }
 
     @PostMapping(path = "/signIn")

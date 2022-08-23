@@ -27,7 +27,7 @@ public class Ledger {
     @Column
     private Long amount;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "email")
+    @JoinColumn(name = "userId")
     private User user;
     @Column
     private boolean deleted = Boolean.FALSE;

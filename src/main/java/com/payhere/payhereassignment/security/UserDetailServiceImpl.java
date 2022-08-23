@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
                     .security
                     .core
                     .userdetails
-                    .User(user.orElseThrow(UserNotFoundException::new).getEmail(), user.orElseThrow(UserNotFoundException::new).getPassword(), grantedAuthorities);
+                    .User(user.orElseThrow(UserNotFoundException::new).getId(), user.orElseThrow(UserNotFoundException::new).getPassword(), grantedAuthorities);
         } catch (UserNotFoundException e) {
             throw new RuntimeException(e);
         }

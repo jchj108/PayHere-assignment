@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
     @Id
-    private String email;
+    private String id;
     @Column
     private String password;
 
@@ -24,7 +24,7 @@ public class User {
     private List<Ledger> ledgerList = new ArrayList<>();
 
     public User(String email, String password, List<Ledger> ledgerList) {
-        this.email = email;
+        this.id = email;
         this.password = password;
         this.ledgerList = ledgerList;
     }
