@@ -1,4 +1,4 @@
-package com.payhere.payhereassignment.config;
+package com.payhere.payhereassignment.security;
 
 import com.payhere.payhereassignment.user.domain.User;
 import com.payhere.payhereassignment.user.exception.UserNotFoundException;

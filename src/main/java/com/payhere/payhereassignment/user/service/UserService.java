@@ -1,7 +1,7 @@
 package com.payhere.payhereassignment.user.service;
 
 import com.payhere.payhereassignment.user.domain.User;
-import com.payhere.payhereassignment.user.dto.SimpleResponseDto;
+import com.payhere.payhereassignment.common.SimpleResponseDto;
 import com.payhere.payhereassignment.user.dto.TokenDto;
 import com.payhere.payhereassignment.user.dto.UserSignInReq;
 import com.payhere.payhereassignment.user.dto.UserSignUpReq;

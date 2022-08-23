@@ -1,4 +1,4 @@
-package com.payhere.payhereassignment.user.dto;
+package com.payhere.payhereassignment.common;
 
 public class SimpleResponseDto {
 
