@@ -67,3 +67,7 @@ CREATE TABLE `Ledger` (
 5. 시큐리티 antMatcher에서 Permit되지 않은 모든 URI Path에 대해 인증 절차 수행
 6. 유효한 토큰이라면 API 접근 인가, 유효하지 않거나 토큰이 존재하지 않는다면 UnAuthorized 예외 리턴
 
+## Notice
+
+1. 시간 관계상 디테일한 예외처리는 구현하지 못했습니다.
+2. 작성한 테스트 코드는 없습니다.
