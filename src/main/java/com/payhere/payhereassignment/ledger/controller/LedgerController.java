@@ -11,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +23,10 @@ public class LedgerController {
     private final LedgerRepository ledgerRepository;
     private final LedgerService ledgerService;
 
+    @ExceptionHandler(LedgerNotFoundException.class)
+    public ResponseEntity<String> ledgerNotFoundExceptionHandler(LedgerNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
     @PostMapping(path = "/ledger")
     public ResponseEntity<LedgerRes> saveOne(@Validated LedgerSaveReq ledgerSaveReq) throws Exception {
         return ledgerService.saveOne(ledgerSaveReq);
